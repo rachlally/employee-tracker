@@ -1,6 +1,6 @@
 const connection = require("./connection");
 
-class Db {
+class Database {
     constructor (connection) {
         this.connection = connection;
     }
