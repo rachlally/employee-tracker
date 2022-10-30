@@ -1,14 +1,26 @@
 //install packages
 const inquirer = require("inquirer");
-const db = require("./db");
-const cTable = require("console.table");
-const express = require('express');
-const PORT = process.env.PORT || 3001;
-const app = express();
+const db = require("./db/connection");
+// const cTable = require("console.table");
+// const express = require('express');
+// const PORT = process.env.PORT || 3001;
+// const app = express();
 
-// Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+// // Express middleware
+// app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
+
+db.query('SELECT * FROM employees', function (err, results) {
+    console.table(results);
+  });
+
+  db.query('SELECT * FROM roles', function (err, results) {
+    console.table(results);
+  });
+
+  db.query('SELECT * FROM departments', function (err, results) {
+    console.table(results);
+  });
 
 loadPrompts();
 
@@ -175,12 +187,12 @@ function addEmployee() {
 //     ])
 // }
 
-function viewEmployees (){
-    db.findAllEmployees()
-        .then(([rows])=>{
-            let employees = rows;
-            console.table(employees);
-        })
-        .then(()=>loadPrompts());
-}
+// function viewEmployees (){
+//     db.findAllEmployees()
+//         .then(([rows])=>{
+//             let employees = rows;
+//             console.table(employees);
+//         })
+//         .then(()=>loadPrompts());
+// }
 
