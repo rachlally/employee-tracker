@@ -11,10 +11,13 @@ INSERT INTO roles (title, salary, departments_id)
 VALUES
     ("Director of Sales", 110000, 1),
     ("Salesperson", 75000, 1),
+
     ("Director of Marketing", 130000, 2),
     ("Assistant Marketer", 65000, 2),
+
     ("Head Engineer", 250000, 3),
     ("Junior Engineer", 80000, 3),
+    
     ("Account Manager", 300000, 4),
     ("Accountant", 150000, 4);
 
