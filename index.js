@@ -187,7 +187,7 @@ function addEmployee() {
         const employeeLast = response.last;
         console.log(employeeFirst, employeeLast);
         getRoles().then((roles) => {
-            const rolesTable = roles[0].map((role) =>
+            let rolesTable = roles[0].map((role) =>
             ({
                 name: role.title,
                 id: role.id
@@ -202,12 +202,13 @@ function addEmployee() {
                 }
             ]).then((response) => {
                 const role = rolesTable.filter(role => role.title === response.choiceRole)
-                console.log("Role Selected!");
+                console.log("Role Title" +role.title);
+                console.log(response.choiceRole);
+                console.log(rolesTable);
                 getEmployees().then((employees) => {
                     const employeesTable = employees[0].map((employee) =>
                     ({
-                        name: employee.first_name,
-                        name: employee.last_name,
+                        name: `${employee.first_name} ${employee.last_name}`,
                         id: employee.id
                     }))
 
@@ -220,6 +221,8 @@ function addEmployee() {
                         }
                     ]).then((response) => {
                         const employee = employeesTable.filter(employee => employee.id === response.choiceManager);
+                        console.log(employee.id)
+                        console.log(employeesTable);
                         db.query("INSERT INTO employees(first_name, last_name, roles_id, manager_id) VALUES (?, ?, ?, ?)", [employeeFirst, employeeLast, role, employee], function (err, results) {
                             loadPrompts();
                         })
@@ -237,7 +240,7 @@ function updateEmployee() {
         console.log(employees)
         const employeeArray = employees[0].map((employee)=>
         ({
-            name: employee.first_name,
+            name: `${employee.first_name} ${employee.last_name}`,
             id: employee.id
         }));
     getRoles().then((roles)=> {
@@ -262,7 +265,7 @@ function updateEmployee() {
         ]).then((response)=> {
             const employee = employeeArray.filter(employee=>employee.name === response.choiceEmployee);
             const role = rolesArray.filter(role=>role.name === response.choiceRole);
-            db.query("UPDATE employees SET roles_id = ? WHERE id = ?", [employee.id, role.id], function (err, results){
+            db.query("UPDATE employees SET roles_id = ? WHERE id = ?", [employee, role.id], function (err, results){
                 loadPrompts();
             })
 
