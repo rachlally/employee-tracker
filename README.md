@@ -11,6 +11,10 @@ I learned how to use mysql, creating and formatting databases.  Within mysql, I 
 
 To install, download program to your local computer.  Run npm i to install required packages: Inquirer, Mysql, and Console.Table.  
 
+## Technology
+
+This application was created using MySQL and Sequelize.
+
 ## Usage
 
 A video walkthrough: https://drive.google.com/file/d/1jY5zcGUoGluKy4oYj6Lfa0TQjy93LwV2/view  
