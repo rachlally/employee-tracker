@@ -13,7 +13,7 @@ To install, download program to your local computer.  Run npm i to install requi
 
 ## Technology
 
-This application was created using MySQL and Sequelize.
+This application was created using MySQL.
 
 ## Usage
 
